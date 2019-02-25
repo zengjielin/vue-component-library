@@ -21,7 +21,8 @@ Default:  {
             startGradient: "#adfc77",
             endGradient: "#09c669"
           }
-Describe: 配置进度条样式，其中background进度条的样式,color右边数字的颜色,startGradient渐变色开始颜色,endGradient渐变色结束颜色 ,
+Describe: 配置进度条样式，其中background进度条的样式,color右边数字的颜色,
+          startGradient渐变色开始颜色,endGradient渐变色结束颜色 ,
 Remark：若使用了该配置，上面的属性属性一定要全，否则样式会错乱。
 
 Name: percent
@@ -52,7 +53,9 @@ Default:  {
             startGradient: "#adfc77",
             endGradient:"#09c669"
           }
-Describe: 配置进度条样式，其中ringWidth圆环的宽度，ringBackground进度条的背景色,ringColor进度条的颜色，startGradient开始渐变色，当progressGradient为true时生效,endGradient结束渐变色，当progressGradient为true时生效
+Describe: 配置进度条样式，其中ringWidth圆环的宽度，ringBackground进度条的背景色,
+          ringColor进度条的颜色，startGradient开始渐变色，当progressGradient为true时生效,
+          endGradient结束渐变色，当progressGradient为true时生效
 Remark：若使用了该配置，上面的属性属性一定要全，否则样式会错乱。
 
 Name: circleRadius
@@ -84,6 +87,7 @@ Default:  {
             startGradient: "#adfc77",
             endGradient:"#09c669"
           }
-Describe: 配置进度条样式，其中size文字大小，txtColor文字颜色,startGradient开始渐变色，当progressGradient为true时生效,endGradient结束渐变色，当progressGradient为true时生效
+Describe: 配置进度条样式，其中size文字大小，txtColor文字颜色,startGradient开始渐变色，
+          当progressGradient为true时生效,endGradient结束渐变色，当progressGradient为true时生效
 Remark：若使用了该配置，上面的属性属性一定要全，否则样式会错乱。
 ```
