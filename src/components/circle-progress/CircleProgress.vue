@@ -1,5 +1,5 @@
 <template>
-    <div class="circle-progress">
+    <div class="circle-progress" :style="{'width':circleRadius*2+'px','height':circleRadius*2+'px'}">
         <canvas id="circle-canvas" :width="circleRadius*2" :height="circleRadius*2"></canvas>
         <canvas id="percent-canvas" :width="circleRadius*2" :height="circleRadius*2"></canvas>
     </div>
@@ -136,10 +136,10 @@ export default {
       let percent = document.getElementById("percent-canvas");
       let percentCtx = percent.getContext("2d");
       if (this.percentGradient) {
-        let gradient = percentCtx.createLinearGradient(0, 0, 190, 0);
+        let gradient = percentCtx.createLinearGradient(0, 0, 10, 10);
         if (
           this.percentConfig.startGradient &&
-          this.progressGradient.endGradient
+          this.percentConfig.endGradient
         ) {
           gradient.addColorStop("0", this.percentConfig.startGradient);
           gradient.addColorStop("1", this.percentConfig.endGradient);

@@ -76,7 +76,7 @@ Describe: 进度条是否使用渐变
 Name: percentConfig
 Type: Object
 Default:  {
-            size: 40,
+            size: 30,
             txtColor: "#E5E9F2",
             startGradient: "#adfc77",
             endGradient:"#09c669"

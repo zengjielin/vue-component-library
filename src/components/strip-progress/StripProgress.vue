@@ -9,6 +9,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      complete: 0
+    };
+  },
   props: {
     config: {
       type: Object,

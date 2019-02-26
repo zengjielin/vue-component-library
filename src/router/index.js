@@ -16,5 +16,9 @@ export default new Router({
     path: '/v_circle_progress',
     name: 'VCircleProgress',
     component: () => import('@/example/VCircleProgress.vue')
+  }, {
+    path: '/v_strip_progress',
+    name: 'VStripProgress',
+    component: () => import('@/example/VStripProgress.vue')
   }]
 })
