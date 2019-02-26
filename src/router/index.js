@@ -20,5 +20,9 @@ export default new Router({
     path: '/v_strip_progress',
     name: 'VStripProgress',
     component: () => import('@/example/VStripProgress.vue')
+  }, {
+    path: '/v_button',
+    name: 'VButton',
+    component: () => import('@/example/VButton.vue')
   }]
 })
