@@ -91,3 +91,32 @@ Describe: 配置进度条样式，其中size文字大小，txtColor文字颜色,
           当progressGradient为true时生效,endGradient结束渐变色，当progressGradient为true时生效
 Remark：若使用了该配置，上面的属性属性一定要全，否则样式会错乱。
 ```
+
+#### Switch开关
+```
+Name: v-model
+Type: Boolean
+Default: true
+Describe: v-model的值，默认是true
+
+Name: width
+Type: Number
+Default: 60
+Describe: switch的宽度
+
+Name: height
+Type: Number
+Default: 30
+Describe: switch的高度
+
+Name: background
+Type: String
+Default: '#ff4949'
+Describe: switch背景色
+
+Name: disabled
+Type: Boolean
+Default: false
+Describe: 是否禁止使用，只能传true或false,否则报错
+
+```

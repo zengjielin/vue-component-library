@@ -1,6 +1,6 @@
 <template>
     <div class="vswitch">
-        <v-switch v-model="status" :width='200' :height='80' :background="background"></v-switch>
+        <v-switch v-model="status" :width='200' :height='80' :background="background" :disabled='false'></v-switch>
     </div>
 </template>
 

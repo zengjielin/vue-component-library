@@ -1,6 +1,6 @@
 <template>
     <div class="switch">
-        <div class="switch-wrapper" :style="{'width':width+'px','height': height+'px','border-radius': (height/2)+'px','background':this.status?switchBg:'#e9ebef'}" :class="{'close':!this.status}" @click="handleSwitch">
+        <div class="switch-wrapper" :style="{'width':width+'px','height': height+'px','border-radius': (height/2)+'px','background':status?switchBg:'#e9ebef'}" :class="{'close':!status,'disabled':this.disabled}" @click="handleSwitch">
             <div class="slider" :style="{'width':(height-2)+'px','height':(height-2)+'px','left':left+'px'}"></div>
         </div>
     </div>
@@ -31,6 +31,10 @@ export default {
     background: {
       type: String,
       default: "#ff4949"
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
@@ -67,6 +71,9 @@ export default {
       }
     },
     handleSwitch() {
+      if (this.disabled) {
+        return;
+      }
       this.status ? (this.status = false) : (this.status = true);
       this.changeStatus();
       // this.$emit("change", this.status); //传change事件，可以让父组件使用@change
@@ -95,6 +102,10 @@ export default {
   }
   .close {
     background: #e9ebef;
+  }
+  .disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
   .slider {
     width: 28px;
