@@ -68,11 +68,6 @@ Type: Number
 Default: 0
 Describe: 进度条已完成进度
 
-Name: percent
-Type: Number
-Default: 0
-Describe: 进度条已完成进度
-
 Name: progressGradient
 Type: Boolean
 Default: false
@@ -83,13 +78,17 @@ Type: Object
 Default:  {
             size: 40,
             txtColor: "#E5E9F2",
-            ringColor: "#5EE270",
             startGradient: "#adfc77",
             endGradient:"#09c669"
           }
 Describe: 配置进度条样式，其中size文字大小，txtColor文字颜色,startGradient开始渐变色，
           当progressGradient为true时生效,endGradient结束渐变色，当progressGradient为true时生效
 Remark：若使用了该配置，上面的属性属性一定要全，否则样式会错乱。
+
+Name: percentGradient
+Type: Boolean
+Default: false
+Describe: 进度条是否使用文字渐变
 ```
 
 #### Switch开关

@@ -1,6 +1,14 @@
 <template>
     <div class="vswitch">
-        <v-switch v-model="status" :width='200' :height='80' :background="background" :disabled='false'></v-switch>
+      <div class="wrapper">
+        <v-switch v-model="status" :width='90' :height='40' :background="background1" :disabled='false'></v-switch>
+      </div>
+      <div class="wrapper">
+        <v-switch v-model="status" :width='160' :height='60' :background="background2" :disabled='false'></v-switch>
+      </div>
+      <div class="wrapper">
+        <v-switch v-model="status" :width='90' :height='40' :background="background2" :disabled='true'></v-switch>
+      </div>
     </div>
 </template>
 
@@ -11,7 +19,8 @@ export default {
   data() {
     return {
       status: true,
-      background: "#409EFF"
+      background1: "#13CE66",
+      background2: "#409EFF"
     };
   },
   watch: {
@@ -26,4 +35,7 @@ export default {
 </script>
 
 <style>
+.wrapper {
+  padding-bottom: 20px;
+}
 </style>

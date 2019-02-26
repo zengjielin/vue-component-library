@@ -61,18 +61,37 @@ export default {
   data() {
     return {
       complete: 0,
-      percentText: 0
+      percentText: 0,
+      percentComplete: 0
     };
   },
   methods: {
-    initCanvas() {
-      //画进度条的背景
+    drawCircleProgress() {
+      //画进度条
       let circle = document.getElementById("circle-canvas");
-      let bgCtx = circle.getContext("2d");
-      bgCtx.strokeStyle = this.progressConfig.ringBackground;
-      bgCtx.lineWidth = this.progressConfig.ringWidth;
-      bgCtx.beginPath();
-      bgCtx.arc(
+      let progressCtx = circle.getContext("2d");
+      if (this.percent != 0) {
+        progressTimer = setInterval(() => {
+          progressCtx.clearRect(
+            0,
+            0,
+            this.circleRadius * 2,
+            this.circleRadius * 2
+          );
+          this.drawMoveProgress(progressCtx, this.percent);
+        }, progressSpeed);
+      }
+    },
+    drawMoveProgress(ctx, percent) {
+      this.complete += percent / progressSpeed;
+      if (this.complete >= percent) {
+        clearInterval(progressTimer);
+      }
+      //画背景环形图
+      ctx.strokeStyle = this.progressConfig.ringBackground;
+      ctx.lineWidth = this.progressConfig.ringWidth;
+      ctx.beginPath();
+      ctx.arc(
         this.circleRadius,
         this.circleRadius,
         this.circleRadius - this.progressConfig.ringWidth / 2,
@@ -80,41 +99,27 @@ export default {
         2 * Math.PI,
         false
       );
-      bgCtx.stroke();
-    },
-    drawCircleProgress() {
-      //画进度条
-      let circle = document.getElementById("circle-canvas");
-      let progressCtx = circle.getContext("2d");
+      ctx.stroke();
+      // 画已完成的进度条
       if (this.progressGradient) {
+        //是否使用进度条渐变色
         if (
+          //当startGradient和endGradient都不为空的时候，渐变色才生效
           this.progressConfig.startGradient &&
           this.progressConfig.endGradient
         ) {
-          let gradient = progressCtx.createLinearGradient(0, 0, 170, 0);
+          let gradient = ctx.createLinearGradient(0, 0, 170, 0);
           gradient.addColorStop("0", this.progressConfig.startGradient);
           gradient.addColorStop("1", this.progressConfig.endGradient);
-          progressCtx.strokeStyle = gradient; //线条渐变色
+          ctx.strokeStyle = gradient; //线条渐变色
         } else {
-          progressCtx.strokeStyle = this.progressConfig.ringColor;
+          ctx.strokeStyle = this.progressConfig.ringColor;
         }
       } else {
-        progressCtx.strokeStyle = this.progressConfig.ringColor;
+        ctx.strokeStyle = this.progressConfig.ringColor;
       }
-      progressCtx.lineWidth = this.progressConfig.ringWidth; //线条宽度
-      progressCtx.lineCap = "round"; //线条两端的样式
-      if (this.percent != 0) {
-        progressTimer = setInterval(() => {
-          this.drawMoveProgress(progressCtx, this.percent);
-        }, progressSpeed);
-      }
-    },
-    drawMoveProgress(ctx, percent) {
-      // 画已完成的进度条
-      this.complete += percent / progressSpeed;
-      if (this.complete >= percent) {
-        clearInterval(progressTimer);
-      }
+      ctx.lineWidth = this.progressConfig.ringWidth; //线条宽度
+      ctx.lineCap = "round"; //线条两端的样式
       ctx.beginPath();
       ctx.arc(
         this.circleRadius,
@@ -148,6 +153,7 @@ export default {
       if (this.percent != 0) {
         percentTimer = setInterval(() => {
           percentCtx.clearRect(
+            //每次更新百分比数字的时候都清除一下
             0,
             0,
             this.circleRadius * 2,
@@ -177,13 +183,20 @@ export default {
   },
   watch: {
     percent() {
+      this.percentText = 0;
+      this.complete = 0;
       this.drawCircleProgress();
       this.drawPercent();
+    },
+    percentComplete() {
+      this.drawCircleProgress();
     }
   },
   mounted() {
-    this.initCanvas();
     this.drawPercent();
+    if (this.percentComplete != this.percent) {
+      this.percentComplete = this.percent;
+    }
   }
 };
 </script>

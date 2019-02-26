@@ -12,5 +12,9 @@ export default new Router({
     path: '/v_switch',
     name: 'VSwitch',
     component: () => import('@/example/VSwitch.vue')
+  }, {
+    path: '/v_circle_progress',
+    name: 'VCircleProgress',
+    component: () => import('@/example/VCircleProgress.vue')
   }]
 })

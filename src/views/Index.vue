@@ -11,21 +11,22 @@ import CircleProgress from "@/components/circle-progress/CircleProgress.vue";
 export default {
   data() {
     return {
-      // config: {
-      //   background: "",
-      //   color: "",
-      //   startGradient: "#adfc77",
-      //   endGradient: "#09c669"
-      // },
+      config: {
+        ringWidth: 6,
+        ringBackground: "#E5E9F2",
+        ringColor: "#20A0FF",
+        startGradient: "#adfc77",
+        endGradient: "#09c669"
+      },
       percent: 0,
       gradient: true,
-      config: {
-        ringWidth: 16, //圆环宽度
-        ringBackground: "#E5E9F2", //进度条背景色
-        ringColor: "#5EE270", //进度条颜色
-        startGradient: "#adfc77", //开始渐变色
-        endGradient: "#09c669" //结束渐变色
-      }
+      // config: {
+      //   ringWidth: 16, //圆环宽度
+      //   ringBackground: "#E5E9F2", //进度条背景色
+      //   ringColor: "#5EE270", //进度条颜色
+      //   startGradient: "#adfc77", //开始渐变色
+      //   endGradient: "#09c669" //结束渐变色
+      // }
     };
   },
   components: {
