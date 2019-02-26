@@ -1,7 +1,7 @@
 <template>
     <div class="index">
         <!-- <strip-progress :config="config" :percent="percent" :gradient="gradient" :height='30'></strip-progress> -->
-        <circle-progress :percent="percent" :progressGradient="gradient" :circleRadius='100' :progressConfig='config'></circle-progress>
+        <!-- <circle-progress :percent="percent" :progressGradient="gradient" :circleRadius='100' :progressConfig='config'></circle-progress> -->
     </div>
 </template>
 

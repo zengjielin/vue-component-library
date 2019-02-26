@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style lang='scss'>
+<style lang='scss' scoped>
 .strip-progress {
   display: flex;
   align-items: center;
