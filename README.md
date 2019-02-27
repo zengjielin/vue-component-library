@@ -55,7 +55,7 @@ Describe: 是否开启进度条背景色,如果为true,config中的startGradient
 
 ```
 
-#### 圆形进度条
+#### 圆形进度条props
 ```
 Name: progressConfig
 Type: Object
@@ -104,7 +104,7 @@ Default: false
 Describe: 进度条是否使用文字渐变
 ```
 
-#### Switch开关
+#### Switch开关props
 ```
 Name: v-model
 Type: Boolean
