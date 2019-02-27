@@ -1,4 +1,16 @@
-#### 组件案例使用scss,务必确保你项目安装并配置了scss
+#### 如何使用
+```
+1、克隆项目到本地
+git clone https://github.com/zengjielin/vue-component-library.git
+2、安装依赖
+npm install
+3、运行项目
+npm run dev
+
+备注：组件都处于封装状态，可以直接复制用到自己的项目中。
+```
+
+#### 如果你单独复制某个组件，注意组件案例使用scss,务必确保你项目安装并配置了scss
 ```
 #安装sass的依赖包
 npm install --save-dev sass-loader
@@ -11,6 +23,7 @@ npm install --save-dev node-sass
   loaders: ['style', 'css', 'sass']
 }
 ```
+
 #### 条形进度条props
 ```
 Name: config
