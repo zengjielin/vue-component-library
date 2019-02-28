@@ -41,4 +41,7 @@ export default {
 </script>
 
 <style>
+.circle-progress-example{
+  padding: 20px;
+}
 </style>

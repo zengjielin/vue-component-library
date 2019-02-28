@@ -34,8 +34,11 @@ export default {
 };
 </script>
 
-<style>
-.wrapper {
-  padding-bottom: 20px;
+<style lang='scss'>
+.vswitch {
+  padding: 20px;
+  .wrapper {
+    padding-bottom: 20px;
+  }
 }
 </style>
