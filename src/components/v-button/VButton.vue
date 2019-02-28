@@ -4,15 +4,23 @@
 
 <script>
 export default {
+  props: {
+    size: {
+      type: String,
+      default: "medium" //可选medium / small / mini
+    },
+    type: {
+      type: String,
+      default: "primary" //可选primary / success / warning / danger / info / text
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
   methods: {
     handleBtnEvent() {
       this.$emit("click");
-    }
-  },
-  props: {
-    type: {
-      type: String,
-      default: "primary"
     }
   }
 };
@@ -20,7 +28,7 @@ export default {
  
 <style lang='scss'>
 .common-button {
-  width: 100px;
+  padding: 0 20px;
   height: 40px;
   border-radius: 4px;
   text-align: center;
@@ -33,11 +41,8 @@ export default {
   border-color: #409eff;
   cursor: pointer;
 }
-.primary-button:hover,
-.primary-button:focus {
-  color: #fff;
-  background-color: #66b1ff;
-  border-color: #66b1ff;
+.primary-button:hover{
+  opacity: 0.8;
 }
 .primary-button:active {
   color: #fff;

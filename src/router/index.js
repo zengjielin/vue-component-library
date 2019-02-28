@@ -24,5 +24,9 @@ export default new Router({
     path: '/v_button',
     name: 'VButton',
     component: () => import('@/example/VButton.vue')
+  }, {
+    path: '/loading',
+    name: 'Loading',
+    component: () => import('@/example/Loading.vue')
   }]
 })
