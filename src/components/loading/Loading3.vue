@@ -14,7 +14,7 @@ export default {
   props: {
     width: {
       type: Number,
-      default: 95
+      default: 100
     },
     color: {
       type: String,

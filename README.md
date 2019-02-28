@@ -132,3 +132,25 @@ Default: false
 Describe: 是否禁止使用，只能传true或false,否则报错
 
 ```
+#### Loading加载props
+```
+ComponentName: Loading1
+Name: width
+Type: Number
+Default: 100
+Describe: 组件的宽度，默认高度等于宽度
+Remark: 第一种loading
+
+注意：另外三种loading的props一样
+ComponentName: Loading2,Loading3,Loading4
+Name: width
+Type
+Default: 100: Number
+Describe: 组件的宽度，组件会根据传过来的宽度进行伸缩
+
+ComponentName: Loading2,Loading3,Loading4
+Name: color
+Type: String
+Default: '#acd8e4
+Describe: 组件的颜色，背景色默认为透明
+```
