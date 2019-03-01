@@ -25,6 +25,7 @@ npm install --save-dev node-sass
 ```
 
 #### 条形进度条props
+![条形进度条](https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/own/425af396aec729fbce17cf48033cd0dd1551404159727.gif)
 ```
 Name: config
 Type: Object
@@ -56,6 +57,7 @@ Describe: 是否开启进度条背景色,如果为true,config中的startGradient
 ```
 
 #### 圆形进度条props
+![圆形进度条](https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/own/425af396aec729fbce17cf48033cd0dd1551404159824.gif)
 ```
 Name: progressConfig
 Type: Object
@@ -105,6 +107,7 @@ Describe: 进度条是否使用文字渐变
 ```
 
 #### Switch开关props
+![Switch开关](https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/own/425af396aec729fbce17cf48033cd0dd1551404159900.gif)
 ```
 Name: v-model
 Type: Boolean
@@ -133,6 +136,7 @@ Describe: 是否禁止使用，只能传true或false,否则报错
 
 ```
 #### Loading加载props
+![Loading](https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/own/425af396aec729fbce17cf48033cd0dd1551404159296.gif)
 ```
 ComponentName: Loading1
 Name: width

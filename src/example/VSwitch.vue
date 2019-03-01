@@ -30,13 +30,21 @@ export default {
   },
   components: {
     VSwitch
+  },
+  mounted () {
+    setTimeout(() => {
+      this.status = false
+    }, 2000);
+    setTimeout(() => {
+      this.status = true
+    }, 4000);
   }
 };
 </script>
 
 <style lang='scss'>
 .vswitch {
-  padding: 20px;
+  padding: 100px;
   .wrapper {
     padding-bottom: 20px;
   }
