@@ -32,5 +32,9 @@ export default new Router({
     path: '/v_button',
     name: 'VButton',
     component: () => import('@/example/VButton.vue')
+  }, {
+    path: '/v_carousel',
+    name: 'VCarousel',
+    component: () => import('@/example/VCarousel.vue')
   }]
 })
