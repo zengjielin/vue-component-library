@@ -124,6 +124,9 @@ export default {
   },
   mounted() {
     this.showImageList = this.resourcesImageList.slice(0, 3);
+    this.$nextTick(() => {
+      this.$emit("click", this.lastOne());
+    });
   }
 };
 </script>
@@ -133,6 +136,7 @@ export default {
   width: 500px;
   height: 300px;
   position: relative;
+  // transform-style: preserve-3d;
   .card-wrapper {
     width: 140px;
     height: 200px;

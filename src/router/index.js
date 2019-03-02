@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-
 export default new Router({
   routes: [{
     path: '/',
@@ -36,5 +35,20 @@ export default new Router({
     path: '/v_carousel',
     name: 'VCarousel',
     component: () => import('@/example/VCarousel.vue')
+  }, {
+    path: '/v_stack_carousel',
+    name: 'VStackCarousel',
+    component: () => import('@/example/VStackCarousel.vue')
+  }, {
+    path: '/demo',
+    name: 'Demo',
+    component: () => import('@/example/Demo.vue')
+  }, {
+    path: '/404',
+    name: '404',
+    component: () => import('@/components/404/404.vue')
+  }, {
+    path: "*",
+    redirect: "/404"
   }]
 })
