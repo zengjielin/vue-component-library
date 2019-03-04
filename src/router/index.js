@@ -36,14 +36,6 @@ export default new Router({
     name: 'VCarousel',
     component: () => import('@/example/VCarousel.vue')
   }, {
-    path: '/v_stack_carousel',
-    name: 'VStackCarousel',
-    component: () => import('@/example/VStackCarousel.vue')
-  }, {
-    path: '/demo',
-    name: 'Demo',
-    component: () => import('@/example/Demo.vue')
-  }, {
     path: '/404',
     name: '404',
     component: () => import('@/components/404/404.vue')

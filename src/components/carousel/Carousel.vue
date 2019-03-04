@@ -1,14 +1,24 @@
 <template>
-    <div>
-        <div class="carousel">
-            <div class="card-wrapper" v-for="(item,index) in showImageList" :key="index">
-                <img :src="item" alt="">
-            </div>
+    <div class="carousel-content-wrapper">   
+        <div class="new-carousel">
+            <ul class="total-img-wrapper">
+                <li class="left" index='0'>
+                    <img alt="">
+                </li>
+                <li class="center" index='1'>
+                    <img alt="">
+                </li>
+                <li class="right" index='2'>
+                    <img alt="">
+                </li>
+            </ul>
         </div>
-        <div class="btn-wrapper">
-            <div class="last-btn" @click="lastOne">last-btn</div>
-            <div class="next-btn" @click="nextOne">next-btn</div>
-        </div>
+        <!-- <div class="line-wrapper">
+          <div class="line-item" v-for="(i,index) in totalImgList" :key="index"></div>
+          <div class="line-item active-line"></div>
+        </div> -->
+        <button @click="lastOne">lastOne</button>
+        <button @click="nextOne">nextOne</button>
     </div>
 </template>
 
@@ -16,169 +26,156 @@
 export default {
   data() {
     return {
-      time: 0,
-      nextTime: 0,
-      resourcesImageList: [
-        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/8c7fc67cdc549900f8c4a182dfe2c06c.jpg",
-        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/4969274d2a6342109d2b5887745d19e6.jpg",
-        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/9b1c93c724501b9299a08efaa4e371af1547717303242.jpg",
-        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/packer-buffet-admin/30226f4dfdeb7d96001632e5b96d68ec1549941616116.ico"
+      classList: ["left", "center", "right"],
+      totalImgList: [
+        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/my-vue/bf27fd83ea16a03a3192bdc3bed7b21d1551517349900.png",
+        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/my-vue/bf27fd83ea16a03a3192bdc3bed7b21d1551517349718.png",
+        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/my-vue/bf27fd83ea16a03a3192bdc3bed7b21d1551517349539.png",
+        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/my-vue/bf27fd83ea16a03a3192bdc3bed7b21d1551517349387.png",
+        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/my-vue/bf27fd83ea16a03a3192bdc3bed7b21d1551517349208.png",
+        "https://packer-static-assets.oss-cn-shenzhen.aliyuncs.com/my-vue/bf27fd83ea16a03a3192bdc3bed7b21d1551517348795.png"
       ],
-      showImageList: []
+      activeImgList: [], //正在显示的三张图片的数组,
+      activeObj: {}
     };
   },
   methods: {
-    changeLastImage() {
-      let imgcache = this.resourcesImageList.shift();
-      this.resourcesImageList.push(imgcache);
-      this.showImageList = this.resourcesImageList.slice(0, 3);
-      console.log(this.showImageList);
-      console.log(this.resourcesImageList);
-    },
-    changeNextImage() {
-      let imgcache = this.resourcesImageList.pop();
-      this.resourcesImageList.unshift(imgcache);
-      this.showImageList = this.resourcesImageList.slice(
-        this.resourcesImageList.length - this.showImageList.length,
-        this.resourcesImageList.length
-      );
+    initCarousel() {
+      let activeImgList = this.totalImgList.slice(0, 3);
+      let imgObj = document.querySelectorAll("img");
+      for (let i = 0; i < activeImgList.length; i++) {
+        imgObj[i].src = activeImgList[i];
+      }
     },
     lastOne() {
-      this.changeLastImage();
-      if (this.nextTime == 1) {
-        this.time = 2;
-      } else if (this.nextTime == 2) {
-        this.time = 1;
-      } else if (this.nextTime == 3) {
-        this.time = 3;
-      }
-      if (this.time == 3) {
-        this.time = 0;
-      }
-      this.nextTime = 0;
-      this.time++;
-      if (this.time == 1) {
-        document.querySelectorAll(".card-wrapper")[0].style =
-          "top:65px;left:350px;width:120px;height:170px";
-        document.querySelectorAll(".card-wrapper")[1].style =
-          "top:65px;left:30px;width:120px;height:170px";
-        document.querySelectorAll(".card-wrapper")[2].style =
-          "top:50px;left:180px;width:140px;height:200px";
-      } else if (this.time == 2) {
-        document.querySelectorAll(".card-wrapper")[0].style =
-          "top:50px;left:180px;width:140px;height:200px";
-        document.querySelectorAll(".card-wrapper")[1].style =
-          "top:65px;left:350px;width:120px;height:170px";
-        document.querySelectorAll(".card-wrapper")[2].style =
-          "top:65px;left:30px;width:120px;height:170px";
-      } else if (this.time == 3) {
-        document.querySelectorAll(".card-wrapper")[0].style =
-          "top:65px;left:30px;width:120px;height:170px";
-        document.querySelectorAll(".card-wrapper")[1].style =
-          "top:50px;left:180px;width:140px;height:200px";
-        document.querySelectorAll(".card-wrapper")[2].style =
-          "top:65px;left:350px;width:120px;height:170px";
+      let classCache = this.classList.pop();
+      this.classList.unshift(classCache);
+      let imageCache = this.totalImgList.shift();
+      this.totalImgList.push(imageCache);
+      let newActiveImageList = this.totalImgList.slice(0, 3);
+      let newImageCache = newActiveImageList.pop();
+      newActiveImageList.unshift(newImageCache);
+      this.activeImgList = newActiveImageList;
+      this.activeObj = {
+        right: this.activeImgList[0],
+        left: this.activeImgList[1],
+        center: this.activeImgList[2]
+      };
+      let liObj = document.querySelectorAll("li");
+      let imgObj = document.querySelectorAll("img");
+      for (let i = 0; i < liObj.length; i++) {
+        liObj[i].className = this.classList[i];
+        if (this.classList[i] == "left") {
+          imgObj[i].src = this.activeObj.left;
+        } else if (this.classList[i] == "center") {
+          imgObj[i].src = this.activeObj.center;
+        } else if (this.classList[i] == "right") {
+          imgObj[i].src = this.activeObj.right;
+        }
       }
     },
     nextOne() {
-      this.changeNextImage();
-      if (this.time == 1) {
-        this.nextTime = 2;
+      let classCache = this.classList.shift();
+      this.classList.push(classCache);
+      let imageCache = this.totalImgList.pop();
+      this.totalImgList.unshift(imageCache);
+      let newActiveImageList = this.totalImgList.slice(0, 3);
+      let newImageCache = newActiveImageList.pop();
+      newActiveImageList.unshift(newImageCache);
+      this.activeImgList = newActiveImageList;
+      this.activeObj = {
+        right: this.activeImgList[0],
+        left: this.activeImgList[1],
+        center: this.activeImgList[2]
+      };
+      let imgObj = document.querySelectorAll("img");
+      let liObj = document.querySelectorAll("li");
+      for (let i = 0; i < liObj.length; i++) {
+        liObj[i].className = this.classList[i];
+        if (this.classList[i] == "left") {
+          imgObj[i].src = this.activeObj.left;
+        } else if (this.classList[i] == "center") {
+          imgObj[i].src = this.activeObj.center;
+        } else if (this.classList[i] == "right") {
+          imgObj[i].src = this.activeObj.right;
+        }
       }
-      if (this.time == 2) {
-        this.nextTime = 1;
-      }
-      if (this.time == 3) {
-        this.nextTime = 3;
-      }
-      if (this.nextTime == 3) {
-        this.nextTime = 0;
-      }
-      this.time = 0;
-      this.nextTime++;
-      if (this.nextTime == 1) {
-        document.querySelectorAll(".card-wrapper")[0].style =
-          "top:50px;left:180px;width:140px;height:200px";
-        document.querySelectorAll(".card-wrapper")[1].style =
-          "top:65px;left:350px;width:120px;height:170px";
-        document.querySelectorAll(".card-wrapper")[2].style =
-          "top:65px;left:30px;width:120px;height:170px";
-      }
-      if (this.nextTime == 2) {
-        document.querySelectorAll(".card-wrapper")[0].style =
-          "top:65px;left:350px;width:120px;height:170px";
-        document.querySelectorAll(".card-wrapper")[1].style =
-          "top:65px;left:30px;width:120px;height:170px";
-        document.querySelectorAll(".card-wrapper")[2].style =
-          "top:50px;left:180px;width:140px;height:200px";
-      }
-      if (this.nextTime == 3) {
-        document.querySelectorAll(".card-wrapper")[0].style =
-          "top:65px;left:30px;width:120px;height:170px";
-        document.querySelectorAll(".card-wrapper")[1].style =
-          "top:50px;left:180px;width:140px;height:200px";
-        document.querySelectorAll(".card-wrapper")[2].style =
-          "top:65px;left:350px;width:120px;height:170px";
-      }
+    },
+    changeImage(){
     }
   },
   mounted() {
-    this.showImageList = this.resourcesImageList.slice(0, 3);
-    this.$nextTick(() => {
-      this.$emit("click", this.lastOne());
-    });
+    this.initCarousel()
   }
 };
 </script>
 
 <style lang='scss'>
-.carousel {
-  width: 500px;
-  height: 300px;
-  position: relative;
-  // transform-style: preserve-3d;
-  .card-wrapper {
-    width: 140px;
-    height: 200px;
-    position: absolute;
-    background: #efefef;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: left 0.4s;
-    img {
-      width: 100%;
+.carousel-content-wrapper {
+  width: 640px;
+  padding: 20px;
+  box-sizing: border-box;
+  .new-carousel {
+    width: 600px;
+    height: 300px;
+    .total-img-wrapper {
+      width: 50%;
       height: 100%;
+      margin: 0 auto;
+      position: relative;
+      transform-style: preserve-3d;
+      li {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      li:nth-of-type(1) {
+        //   background: blueviolet;
+      }
+      li:nth-of-type(2) {
+        //   background: red;
+      }
+      li:nth-of-type(3) {
+        //   background: greenyellow;
+      }
+      .left {
+        left: -150px;
+        z-index: 4;
+        transform: scale(0.8);
+        transition: all 0.6s ease-in-out;
+      }
+      .center {
+        z-index: 5;
+        left: 0;
+        transition: all 0.6s ease-in-out;
+      }
+      .right {
+        left: 150px;
+        z-index: 4;
+        transform: scale(0.8);
+        transition: all 0.6s ease-in-out;
+      }
     }
   }
-  .card-wrapper:nth-of-type(1) {
-    width: 120px;
-    height: 170px;
-    top: 65px;
-    left: 30px;
-  }
-  .card-wrapper:nth-of-type(2) {
-    top: 50px;
-    left: 180px;
-  }
-  .card-wrapper:nth-of-type(3) {
-    width: 120px;
-    height: 170px;
-    top: 65px;
-    left: 350px;
-  }
-}
-.btn-wrapper {
-  display: flex;
-  color: #fff;
-  cursor: pointer;
-  .last-btn {
-    padding: 20px;
-    background: blue;
-  }
-  .next-btn {
-    padding: 20px;
-    background: yellowgreen;
+  .line-wrapper {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: 20px 0;
+    .line-item {
+      width: 30px;
+      height: 4px;
+      background: red;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+    .active-line {
+      background: blue;
+    }
   }
 }
 </style>
